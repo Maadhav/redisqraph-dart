@@ -13,7 +13,10 @@ Future<void> main() async {
         db: 'osfy-pms'),
   );
   test('query builder', () async {
-    final response = await redis.query.match("p:Person").return_("p").execute();
+    final response = await redis.query
+        .match(r"p:Person {purpose:$purpose}")
+        .return_("p")
+        .execute(params: {'purpose': "pleasure"});
     print(response.get(["p"]));
   });
 }
