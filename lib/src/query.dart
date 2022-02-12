@@ -17,6 +17,7 @@ class Query {
   Query match(String node, {bool optional = true}) =>
       Query._append("${optional ? "OPTIONAL " : ''} MATCH ($node)", _query);
   Query create(String node) => Query._append("CREATE ($node)", _query);
+  Query merge(String node) => Query._append("MERGE ($node)", _query);
   Query cypher(String clause) => Query._append(clause, _query);
   Query return_(String clause, {bool distinct = false}) =>
       Query._append("RETURN ${distinct ? "DISTINCT" : ""} $clause", _query);
