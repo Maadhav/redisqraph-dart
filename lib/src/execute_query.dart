@@ -39,7 +39,7 @@ class Execute {
       } else if (params[key] == null) {
         params[key] = "null";
       }
-      paramsHeader += key + "=" + params[key] + " ";
+      paramsHeader += "$key = ${params[key]} ";
     }
     return paramsHeader;
   }
