@@ -1,4 +1,6 @@
 import 'dart:convert';
+import 'dart:developer';
+import 'package:flutter/foundation.dart';
 import 'package:redis/redis.dart';
 import 'package:redisgraph/redisgraph.dart';
 import 'package:redisgraph/src/graph_response.dart';
@@ -9,7 +11,9 @@ class Execute {
       {Map<String, dynamic>? params, required String initial}) async {
     final instance = RedisClient.instance;
     final Command command = instance.command;
-    print(buildParamsHeader(params) + query.toString());
+    if (kDebugMode) {
+      log(buildParamsHeader(params) + query.toString());
+    }
     return await command.send_object([
       initial,
       instance.app.db,
