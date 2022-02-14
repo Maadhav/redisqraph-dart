@@ -11,7 +11,7 @@ String convertCompare(String node, Comparison operator, Object? value) {
     case Comparison.lessThanEqualTo:
       return " $node <= $value";
     case Comparison.inequality:
-      return " $node != $value";
+      return " $node <> $value";
     case Comparison.equality:
       return " $node = $value";
     case Comparison.greaterThan:
