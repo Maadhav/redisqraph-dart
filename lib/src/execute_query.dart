@@ -22,8 +22,8 @@ class Execute {
       final res = List.from(value);
       return GraphResponse(
           returnedItems: List<String>.from(res[0]),
-          data: res[1],
-          metadata: res[2]);
+          data: res[0].isEmpty?[] :res[1],
+          metadata: res[0].isEmpty?[]:res[2]);
     }).catchError((err) {
       if (instance.onRetry != null) {
         instance.onRetry!(err);
